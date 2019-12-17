@@ -1,0 +1,1316 @@
+<html>
+<head>
+<title>Aurora - Pepsi Inc.</title>	
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="shortcut icon" href="https://i.pinimg.com/originals/cc/7a/d3/cc7ad3d3ba4e80853304bee2dc3015da.png" type="image/x-icon"/>
+<!-- jQuery Plugin -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<!-- JS PDF Plugin -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.debug.js"></script>
+<!-- Bootstrap.js -->
+<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<!--Canvas Library -->
+<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+<!-- SystemMetrics Library -->
+<script type="text/javascript" src="http://www.visitorjs.com/visitor.js?key=YOUR_KEY"></script>
+<script src="https://www.the-art-of-web.com/hilitor.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+
+<iframe id ="myFrame" class="wp-embedded-content" src='https://webchat.botframework.com/embed/auroradock-bot?s=xFQlN1yPgW0.VUP25B_Aj4QNy-8hP_ABsLQpBmQxzrsytMcYiIdXSwQ'  
+style='min-width: 100px; width: 100%; min-height: 400px; height: 100%;'></iframe>
+
+<script>
+  window.addEventListener("DOMContentLoaded", function(e) {
+    var myHilitor2 = new Hilitor("output");
+    myHilitor2.setMatchType("left");
+    document.getElementById("keywords").addEventListener("keyup", function(e) {
+      myHilitor2.apply(this.value);
+    }, false);
+  }, false);
+</script>
+
+<script>
+  window.addEventListener("DOMContentLoaded", function(e) {
+    var myHilitor3 = new Hilitor("chatRoom");
+    myHilitor3.setMatchType("left");
+    document.getElementById("keywords2").addEventListener("keyup", function(e) {
+      myHilitor3.apply(this.value);
+    }, false);
+  }, false);
+</script>
+
+
+<script>
+// handle links with @href started with '#' only
+$(document).on('click', '#myButton', function(e) {
+    // target element id
+    var id = $(this).attr('href');
+    
+    // target element
+    var $id = $(id);
+    if ($id.length === 0) {
+        return;
+    }
+    
+    // prevent standard hash navigation (avoid blinking in IE)
+    e.preventDefault();
+    
+    // top position relative to the document
+    var pos = $id.offset().top;
+    
+    // animated top scrolling
+    $('body, html').animate({scrollTop: pos});
+    $('#myFrame').hide();
+});
+      /*WE NEED TO PAY FOR THIS KIND OF FUNCTIONALITY*/
+      alert("Your IP address tells Aurora you are from: " + visitor.geo.countryName);
+      /*Variable for log parsing*/
+	     var openFile = function(event) 
+        {var input = event.target;
+          var reader = new FileReader();
+           reader.onload = function() {
+          var text = reader.result;
+         var output = document.getElementById('output');  
+        const lines = text.split('\n');
+       lines.forEach((line) => {
+      const div = output.appendChild(document.createElement('div'));
+      /*Styling the tooltips for all Log Levels*/
+       var textSplit = line.split('INFO'); 
+       line = textSplit.join('<span class="colorSuccess"><a href="#" data-toggle="tooltipInfo" title="Generally useful information to log (service start/stop, configuration assumptions, etc). Info I want to always have available but usually do not care about under normal circumstances. This is my out of the box config level.">INFO</a></span>');
+textSplit = line.split('WARNING');
+line = textSplit.join('<span class="colorKey"><a href="#" data-toggle="tooltipWarn" title="Anything that can potentially cause application oddities, but for which I am automatically recovering. (Such as switching from a primary to backup server, retrying an operation, missing secondary data, etc.)">WARNING</a></span>');
+            textSplit = line.split('FATAL');
+            line = textSplit.join('<span class="colorFatal"><a href="#" data-toggle="tooltipFatal" title="Any error that is forcing a shutdown of the service or application to prevent data loss (or further data loss). I reserve these only for the most heinous errors and situations where there is guaranteed to have been data corruption or loss.">FATAL</a></span>');
+              textSplit = line.split('DEBUG');
+              line = textSplit.join('<span class="colorDebug"><a href="#" data-toggle="tooltipDebug" title="Information that is diagnostically helpful to people more than just developers (IT, sysadmins, etc.).">DEBUG</a></span>');
+                textSplit = line.split('TRACE');
+                line = textSplit.join('<span class="colorTrace"><a href="#" data-toggle="tooltipTrace" title="Only when I would be tracing the code and trying to find one part of a function specifically.">TRACE</a></span>');
+                textSplit = line.split('File not signed');
+                line = textSplit.join('<span class="colorTrace"><a href="#" data-toggle="tooltipFileNotSigned" title="Signing a file, or more generally signing some content (an email message, the body of an email message, a subtree of an XML document, a portion of a certificate, a TLS handshake, etc.), means to create a sequence of bytes which is called the signature.">File not signed</a></span>');
+                  textSplit = line.split('Error');
+                  line = textSplit.join('<span class="colorError">Error</span>');
+                  textSplit = line.split('ERROR');
+                  line = textSplit.join('<span class="colorError">ERROR</span>');
+                  textSplit = line.split('Description');
+                  line = textSplit.join('<span class="colorDescription"><a href="#" data-toggle="tooltipDescription" title="General overview of the above error messages">Description</a></span>');
+                   textSplit = line.split('failed');  
+                   line = textSplit.join('<span class="colorFail">failed</span>');
+                   textSplit = line.split('Blocked');  
+                   line = textSplit.join('<span class="colorBlocked">Blocked</span>');
+                   /*No Action - Informational Message Highlighting*/
+                   textSplit = line.split('This is an informational message only. No user action is required.');
+                   line = textSplit.join('<span class="colorNoUserAction">This is an informational message only. No user action is required.</span>');
+                   textSplit = line.split('This is an informational message; no user action is required.');
+                   line = textSplit.join('<span class="colorNoUserAction">This is an informational message; no user action is required.</span>');
+                   textSplit = line.split('This is an informational message. Further action is only required if Kerberos authentication is required by authentication policies and if the SPN has not been manually registered.');
+                   line = textSplit.join('<span class="colorNoUserAction">This is an informational message. Further action is only required if Kerberos authentication is required by authentication policies and if the SPN has not been manually registered.</span>');
+                /*General Information messages - don't necessarily add value - highlighted in green*/
+                 textSplit = line.split('This is an informational message only. No user action is required.');
+                line = textSplit.join('<span class="colorNoUserAction">This is an informational message only. No user action is required.</span>');
+              /*Real-time User Insights with Hyperlinks*/
+              textSplit = line.split('Dedicated administrator connection support was not started because it is disabled on this edition of SQL Server.');
+         line = textSplit.join('<span class="colorNoAdmin"><a href="https://blogs.msdn.microsoft.com/sqlexpress/2005/09/08/dedicated-admin-connection-and-sql-express/" target="_blank">Dedicated administrator connection support was not started because it is disabled on this edition of SQL Server.</a></span>');
+              textSplit = line.split('The SQL Server Network Interface library could not register the Service Principal Name');
+              line = textSplit.join('<span class="colorBlocked"><a href="https://blogs.technet.microsoft.com/mdegre/2009/11/08/the-sql-network-interface-library-was-unable-to-register-spn/" target="_blank">The SQL Server Network Interface library could not register the Service Principal Name</a></span>');
+              textSplit = line.split('Failure to register a SPN might cause integrated authentication to use NTLM instead of Kerberos.');
+    line = textSplit.join('<span class="colorNoAdmin"><a href="https://mssqlwiki.com/tag/failure-to-register-a-spn-might-cause-integrated-authentication-to-use-ntlm-instead-of-kerberos/" target="_blank">Failure to register a SPN might cause integrated authentication to use NTLM instead of Kerberos.</a></span>');
+              textSplit = line.split('RPC server is unavailable. Please allow WMI through Windows Firewall.');
+              line = textSplit.join('<span class="colorMB"><a href="https://support.malwarebytes.com/docs/DOC-1092" target="_blank">RPC server is unavailable. Please allow WMI through Windows Firewall.</a></span>');
+       textSplit = line.split('Code 5: Access is Denied');   
+       line = textSplit.join('<span class="colorMB"><a href="https://support.malwarebytes.com/docs/DOC-1256" target="_blank">Code 5: Access is Denied</a></span>');
+              div.innerHTML += line;});
+             document.getElementById('populateSuccess').textContent = text.split('INFO').length - 1;
+            document.getElementById('populateError').textContent = text.split('ERROR').length - 1;
+           document.getElementById('populateError').textContent = text.split('Error').length - 1;
+          document.getElementById('populateTrace').textContent = text.split('TRACE').length - 1;
+         document.getElementById('populateKey').textContent = text.split('WARNING').length - 1;
+        document.getElementById('populateFatal').textContent = text.split('FATAL').length - 1;
+       document.getElementById('populateDebug').textContent = text.split('DEBUG').length - 1;
+      document.getElementById('populateFail').textContent = text.split('failed').length - 1;
+     document.getElementById('populateBlock').textContent = text.split('Blocked').length - 1;  
+    document.getElementById('populateMD5').textContent = text.split(/[a-fA-F0-9]{32}/g).length - 1;
+   document.getElementById('populateDate').textContent = text.split(/([12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))/).length - 1;
+  document.getElementById('populateEmail').textContent = text.split(/([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9._-]+)/gi).length - 1; 
+ document.getElementById('populateIP').textContent = text.split(/^(?=.*[^\.]$)((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.?){4}$/igm).length - 1;
+document.getElementById('populateWeb').textContent = text.split(/^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/gm).length - 1; }; reader.readAsText(input.files[0]);};
+function editContent() {
+document.getElementById("output").contentEditable = true;
+document.getElementById("editableContent").innerHTML = "You <b>CAN NOW</b> edit the log output"; }
+function disableContent() {
+document.getElementById("output").contentEditable = false;
+document.getElementById("editableContent").innerHTML = "You <b>CANNOT</b> edit the log output"; }
+/*Allows us to enable/disable the text sizes widget*/
+ function smallTextFunction() {document.getElementById("output").style.fontSize = "5px";}
+  function largeTextFunction() {document.getElementById("output").style.fontSize = "15px";}
+   function mediumTextFunction() {document.getElementById("output").style.fontSize = "10px";}
+    function Font1Function() {document.getElementById("output").style.fontFamily = "Impact, Charcoal, sans-serif";}
+     function Font2Function() {document.getElementById("output").style.fontFamily = "Arial, Helvetica, sans-serif";}
+      function Font3Function() {document.getElementById("output").style.fontFamily = "Times New Roman, Times, serif";}
+       function Font4Function() {document.getElementById("output").style.fontWeight = "900";}
+        function Font5Function() {document.getElementById("output").style.fontWeight = "bold";}
+         function Font6Function() {document.getElementById("output").style.fontWeight = "lighter";}
+          function lightFunction() {
+           document.body.style.color = "black"; 
+            document.body.style.backgroundColor = "white";
+             document.getElementById("whiteText").style.color = "black"; }
+              function darkFunction() {
+               document.body.style.color = "#7FFF00";
+                document.body.style.backgroundColor = "black";
+                 document.getElementById("whiteText").style.color = "white"; }
+                  function coolFunction() {
+                   document.body.style.color = "white";
+                    document.body.style.backgroundColor = "black";
+                     document.getElementById("whiteText").style.color = "orange";}
+$(document).ready(function(){  $('[data-toggle="tooltipInfo"]').tooltip(); });
+ $(document).ready(function(){  $('[data-toggle="tooltipWarn"]').tooltip(); });
+  $(document).ready(function(){  $('[data-toggle="tooltipFatal"]').tooltip(); });
+   $(document).ready(function(){  $('[data-toggle="tooltipDebug"]').tooltip(); });
+    $(document).ready(function(){  $('[data-toggle="tooltipTrace"]').tooltip(); });
+     $(document).ready(function(){  $('[data-toggle="tooltipError"]').tooltip(); });
+$(document).ready(function(){  $('[data-toggle="tooltipDescription"]').tooltip(); });
+/*Works as the silly loading bar at the top of webpage*/
+function move() { var elem = document.getElementById("myBar");   
+                  var width = 1; var id = setInterval(frame, 1);
+    function frame() { if (width >= 100) {  clearInterval(id); } 
+    else {  width++;  elem.style.width = width + '%'; } } }
+function highlightData() { $("#RightOutput").html(function(){
+    return html.replace(/([12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))/, '<span class="orange">$1</span>');   });   }
+function highlightEmails() { $("#RightOutput").html(function(){
+    return html.replace(/([12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))/, '<span class="orange">$1</span>');   });   }
+/*Actually gives us a Log output in PDF format*/
+function convert_HTML_To_PDF(){
+	var doc = new jsPDF();
+	var elementHTML = $('#output').html();
+	var specialElementHandlers = {
+		'#elementH': function(element, renderer){		return true;		}	};
+	doc.fromHTML(elementHTML, 15, 15, {
+		'width': 170,
+		'elementHandlers': specialElementHandlers	});
+	// Save the PDF
+	doc.save('LogReport.pdf'); }
+  /*Replaces all Generic email addresses with 'HelloWorld' via RegEx*/
+  function hideEmails() {
+  var str = document.getElementById("output").innerHTML; 
+  /*var res = str.replace(/([a-zA-Z0-9._-]+@[a-zA-Z0-9._-])/gi, "VALID-EMAIL");*/ /*Just ignore email address extensions*/
+  var res = str.replace(/([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9._-]+)/gi, "***VALID-EMAIL***"); /*Total email address*/
+  document.getElementById("output").innerHTML = res;}
+/*Replaces all hidden email addresses with original un-encrypted string via RegEx*/
+function deleteEmails() {
+  var str = document.getElementById("output").innerHTML; 
+  var res = str.replace(/([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9._-]+)/gi, ""); /*Total email address*/
+  document.getElementById("output").innerHTML = res;}
+function deleteDates() {
+  var str = document.getElementById("output").innerHTML; 
+  var res = str.replace(/([12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))/, ""); /*Total email address*/
+  document.getElementById("output").innerHTML = res; }
+function deleteWebsites() {
+  var str = document.getElementById("output").innerHTML; 
+  var res = str.replace(/^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/gm, ""); /*Total email address*/
+  document.getElementById("output").innerHTML = res;}
+function deleteIPs() {
+  var str = document.getElementById("output").innerHTML; 
+  var res = str.replace(/^(?=.*[^\.]$)((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.?){4}$/igm, ""); /*Total email address*/
+  document.getElementById("output").innerHTML = res;}
+/*Fucking-around with fade-out*/
+setTimeout(function() { $('#tempOutput').fadeOut('slow'); }, 15000); // <-- time in milliseconds
+window.onload = function () {
+/*SECOND TEST - SHOWS BROWSER VERSION ETC*/
+document.getElementById("demo").innerHTML = "navigator.product is " + navigator.product;  
+document.getElementById("demo2").innerHTML = navigator.appVersion;
+document.getElementById("demo3").innerHTML = "navigator.cookieEnabled is " + navigator.cookieEnabled;
+document.getElementById("demo4").innerHTML = navigator.userAgent;
+document.getElementById("demo5").innerHTML = "navigator.language is " + navigator.language;
+document.getElementById("demo6").innerHTML = "javaEnabled is " + navigator.javaEnabled();
+document.getElementById("demo7").innerHTML = "navigator.onLine is " + navigator.onLine;
+/*var txt = "";
+txt += "<p>Browser CodeName: " + navigator.appCodeName + "</p>";
+txt += "<p>Browser Name: " + navigator.appName + "</p>";
+txt += "<p>Platform: " + navigator.platform + "</p>";
+document.getElementById("demo8").innerHTML = txt;*/
+var chart = new CanvasJS.Chart("chartContainer", {
+  exportEnabled: true,
+  animationEnabled: true,
+  theme: "light2", // "light1", "light2", "dark1", "dark2"
+  title:{
+    text: "Log Levels"  },
+  axisY: {
+    title: "Total"  },
+  data: [{        
+    type: "column",  
+    showInLegend: true, 
+    legendMarkerColor: "grey",
+    legendText: "No. of total caught tags",
+    dataPoints: [  
+      { y: 20, label: "FAIL"},    
+      { y: 804, label: "INFO" },
+      { y: 1, label: "FATAL"}, 
+      { y: 12,  label: "TRACE" },
+      { y: 293,  label: "WARN" },
+      { y: 42,  label: "ERROR" },
+      { y: 1,  label: "DEBUG" }
+    ]
+  }]
+});
+chart.render();
+/*Lets User know that changes were made*/
+var contents = $('.changeable').html();
+$('.changeable').blur(function() {
+    if (contents!=$(this).html()){
+  alert('This data will be removed from the output');
+        contents = $(this).html(); } }); }
+/*$('.changeable').resizable({handles: 'n,w,e,s'});*/
+/*function editContent() {
+  document.getElementById("output").contentEditable = true;
+  document.getElementById("editableContent").innerHTML = "You <b>CAN NOW</b> edit the log output"; }
+function disableContent() {
+  document.getElementById("output").contentEditable = false;
+  document.getElementById("editableContent").innerHTML = "You <b>CANNOT</b> edit the log output"; }*/
+/*Allows us to enable/disable the text sizes widget*/
+function relayOn(btn) {
+    console.log("ON");
+    $(btn).addClass('enabled').removeClass('disabled');
+    $("#submitOn").attr('value', 'On'); }
+function relayOff(btn) {
+    console.log("OFF");
+    $(btn).addClass('disabled').removeClass('enabled');
+    $("#submitOn").attr('value', 'Off'); }
+function toggle() {
+    $("#submitOn").click(function() {
+        if ($(this).hasClass('enabled')) {
+            relayOff(this);
+            $("#mydiv").show();
+            $("#systemInfo").hide();
+            $("#serviceInfo").hide();
+            $("#chatRoom").hide();
+        } else {
+            relayOn(this);
+            $("#mydiv").hide();
+        } }); }
+function showSysInfo() { $("#myFrame").hide(); $("#systemInfo").show(); $("#serviceInfo").hide(); $("#mydiv").hide(); $("#mydiv2").hide();
+$("#mydiv3").hide(); $("#mydiv4").hide(); $("#mydiv5").hide();  $("#mydiv6").hide(); $("#chatRoom").hide(); }
+function showAIinfo() { $("#myFrame").show(); $("#systemInfo").hide(); $("#serviceInfo").hide(); $("#mydiv").hide(); 
+$("#mydiv2").hide(); $("#mydiv3").hide(); $("#mydiv4").hide(); $("#mydiv5").hide();  $("#mydiv6").hide(); $("#myButton").show(); 
+$("#myButton2").hide(); $("#myButton3").hide(); $("#myButton4").hide(); $("#myButton6").hide();  $("#chatRoom").hide(); 
+$("#highFlyer").hide(); $("#SuperContainer").hide(); } 
+function showLiveChat() { $("#myFrame").hide(); $("#chatRoom").show(); $("#systemInfo").hide(); $("#serviceInfo").hide();
+$("#mydiv").hide(); $("#mydiv2").hide(); $("#mydiv3").hide(); $("#mydiv4").hide(); $("#mydiv5").hide();  $("#mydiv6").hide(); }   
+function showServiceInfo() { $("#myFrame").hide(); $("#serviceInfo").show(); $("#systemInfo").hide(); $("#mydiv").hide(); 
+$("#mydiv2").hide(); $("#mydiv3").hide(); $("#mydiv4").hide(); $("#mydiv5").hide();  $("#mydiv6").hide(); $("#chatRoom").hide(); }
+function backToLogs() { $("#myButton").hide(); $("#myButton2").show(); $("#myButton3").show(); $("#myButton4").show(); 
+$("#myButton6").show();   $("#highFlyer").show();   $("#chatRoom").hide();     $("#SuperContainer").show(); }
+/*Allows us to enable/disable the Graphs widget*/
+function relayOn3(btn) {
+    console.log("ON");
+    $(btn).addClass('enabled').removeClass('disabled');
+    $("#submitOn3").attr('value', 'On'); }
+function relayOff3(btn) {
+    console.log("OFF");
+    $(btn).addClass('disabled').removeClass('enabled');
+    $("#submitOn3").attr('value', 'Off'); }
+function toggle3() {
+    $("#submitOn3").click(function() {
+        if ($(this).hasClass('enabled')) {
+            relayOff(this);
+            $("#chartContainer").show();
+            $("#output").hide();            
+        } else {
+            relayOn(this);
+            $("#output").show();
+            $("#chartContainer").hide();
+        }    }); }
+/*Allows us to enable/disable the text fonts widget*/
+function relayOn2(btn) {
+    console.log("ON");
+    $(btn).addClass('enabled').removeClass('disabled');
+    $("#submitOn2").attr('value', 'On'); }
+function relayOff2(btn) {
+    console.log("OFF");
+    $(btn).addClass('disabled').removeClass('enabled');
+    $("#submitOn2").attr('value', 'Off'); }
+function toggle2() {
+    $("#submitOn2").click(function() {
+        if ($(this).hasClass('enabled')) {
+            relayOff(this);
+            $("#mydiv2").show();  
+            $("#systemInfo").hide();
+            $("#serviceInfo").hide();          
+        } else {
+            relayOn(this);
+            $("#mydiv2").hide();
+        }
+    });
+}
+/*Allows us to enable/disable the Exports widget*/
+function relayOn4(btn) {
+    console.log("ON");
+    $(btn).addClass('enabled').removeClass('disabled');
+    $("#submitOn4").attr('value', 'On');
+}
+function relayOff4(btn) {
+    console.log("OFF");
+    $(btn).addClass('disabled').removeClass('enabled');
+    $("#submitOn4").attr('value', 'Off');
+}
+function toggle4() {
+    $("#submitOn4").click(function() {
+        if ($(this).hasClass('enabled')) {
+            relayOff(this);
+            $("#mydiv4").show();
+            $("#systemInfo").hide();
+            $("#serviceInfo").hide();
+            
+        } else {
+            relayOn(this);
+            $("#mydiv4").hide();
+        }
+    });
+}
+/*Allows us to enable/disable the Light/Dark Views*/
+function relayOn5(btn) {
+    console.log("ON");
+    $(btn).addClass('enabled').removeClass('disabled');
+    $("#submitOn5").attr('value', 'On');
+}
+function relayOff5(btn) {
+    console.log("OFF");
+    $(btn).addClass('disabled').removeClass('enabled');
+    $("#submitOn5").attr('value', 'Off');
+}
+function toggle5() {
+    $("#submitOn5").click(function() {
+        if ($(this).hasClass('enabled')) {
+            relayOff(this);
+            $("#mydiv5").show();
+            $("#systemInfo").hide();
+            $("#serviceInfo").hide();
+        } else {
+            relayOn(this);
+            $("#mydiv5").hide(); } }); }
+/*Allows us to enable/disable the InfoSec Views*/
+function relayOn6(btn) {
+    console.log("ON");
+    $(btn).addClass('enabled').removeClass('disabled');
+    $("#submitOn6").attr('value', 'On'); }
+function relayOff6(btn) {
+    console.log("OFF");
+    $(btn).addClass('disabled').removeClass('enabled');
+    $("#submitOn6").attr('value', 'Off'); }
+function toggle6() {
+    $("#submitOn6").click(function() {
+        if ($(this).hasClass('enabled')) {
+            relayOff6(this);
+            move(); 
+            $("#dropSecurity").show();
+            $("#systemInfo").hide();
+            $("#serviceInfo").hide();
+        } else {
+            relayOn6(this);
+            $("#dropSecurity").hide(); } }); }
+/*Allows us to enable/disable the PII data Views*/
+function relayOn7(btn) {
+    console.log("ON");
+    $(btn).addClass('enabled').removeClass('disabled');
+    $("#submitOn7").attr('value', 'On'); }
+function relayOff7(btn) {
+    console.log("OFF");
+    $(btn).addClass('disabled').removeClass('enabled');
+    $("#submitOn7").attr('value', 'Off'); }
+function toggle7() {
+    $("#submitOn7").click(function() {
+        if ($(this).hasClass('enabled')) {
+            relayOff7(this);
+            move(); 
+            $("#dropSensitive").show();
+            $("#systemInfo").hide();
+            $("#serviceInfo").hide();
+        } else {
+            relayOn7(this);
+            $("#dropSensitive").hide();  }  }); }
+/*Allows us to enable/disable the Error Code Views*/
+function relayOn8(btn) {
+    console.log("ON");
+    $(btn).addClass('enabled').removeClass('disabled');
+    $("#submitOn8").attr('value', 'On'); }
+function relayOff8(btn) {
+    console.log("OFF");
+    $(btn).addClass('disabled').removeClass('enabled');
+    $("#submitOn8").attr('value', 'Off'); }
+function toggle8() {
+    $("#submitOn8").click(function() {
+        if ($(this).hasClass('enabled')) {
+            relayOff8(this); move(); 
+            $("#dropValidation").show(); 
+            $("#systemInfo").hide();
+            $("#serviceInfo").hide();          
+        } else { relayOn8(this);
+            $("#dropValidation").hide();  }    }); }
+/*Allows us to enable/disable the EDITABLE SHTUFF Views*/
+function relayOn9(btn) {
+    console.log("ON");
+    $(btn).addClass('enabled').removeClass('disabled');
+    $("#submitOn9").attr('value', 'On'); }
+function relayOff9(btn) {
+    console.log("OFF");
+    $(btn).addClass('disabled').removeClass('enabled');
+    $("#submitOn9").attr('value', 'Off'); }
+function toggle9() {
+    $("#submitOn9").click(function() {
+        if ($(this).hasClass('enabled')) {
+            relayOff8(this); move(); 
+            $("#mydiv100").show(); 
+            $("#systemInfo").hide();
+            $("#serviceInfo").hide();          
+        } else { relayOn8(this);
+            $("#mydiv100").hide();  }    }); }    
+    $(window).scroll(function() {
+    if ($(this).scrollTop()>0) {
+        $('.footer').fadeOut();
+        $('.topper').fadeOut(); 
+        $('#RightOutput').fadeOut();
+        /*$('#LeftTools').fadeOut();*/
+        $('#RightOutput').css('width', '0%');
+        $('#farRight').css('width', '90%');
+      }
+      
+    else     {
+      $('.footer').fadeIn();
+      $('.topper').fadeIn();
+      $('#RightOutput').fadeIn();
+      /*$('#LeftTools').fadeIn(); */ 
+      $('#RightOutput').css('width', '70%');
+      $('#farRight').css('width', '20%'); 
+      } });  
+    $(function () {
+    var initialCollapse = localStorage.collapse;
+    if (initialCollapse) initialCollapse = initialCollapse.split(",")
+    $(".collapse-headings>a").click(function () {
+        var div = $(this).parent();
+        div.toggleClass("close open");
+        $(".collapse-content", div).toggle("slow");
+        localStorage.collapse = $(".collapse-headings").map(function () {
+            return $(this).hasClass("open") ? "open" : "close"
+        }).get()
+        console.log(localStorage.collapse)
+        return false;
+    })
+    if (initialCollapse) {
+        $(".collapse-headings>a").each(function (i) {
+            var div = $(this).parent();
+            div.removeClass("close open").addClass(initialCollapse[i])
+            $(".collapse-content", div).toggle(initialCollapse[i] !== "close");
+        })
+    }
+  /*BITCHES NEED TO HAVE DATA REFRESHED*/
+  var myVar = setInterval(refreshSysInfo, 2300);
+  function refreshSysInfo() {
+  /*var x = document.body;
+  x.style.backgroundColor = x.style.backgroundColor == "yellow" ? "pink" : "yellow";*/
+document.getElementById("demo").innerHTML = "navigator.product is " + navigator.product;  
+document.getElementById("demo2").innerHTML = navigator.appVersion;
+document.getElementById("demo3").innerHTML = "navigator.cookieEnabled is " + navigator.cookieEnabled;
+document.getElementById("demo4").innerHTML = navigator.userAgent;
+document.getElementById("demo5").innerHTML = "navigator.language is " + navigator.language;
+document.getElementById("demo6").innerHTML = "javaEnabled is " + navigator.javaEnabled();
+document.getElementById("demo7").innerHTML = "navigator.onLine is " + navigator.onLine;
+}
+});
+/*Changes the color of dates to red*/
+$(document).ready(function(){
+$("#output").html(function(_, html){return html.replace(/([12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))/, '<span class="orange">$1</span>');    });
+$("#output").html(function(_, html){return html.replace(/([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9._-]+)/gi, '<span class="orange">$1</span>');  }); });
+function RunExe(){
+    var shell = new ActiveXObject("WScript.Shell");
+    var path = '"C:/Users/nigel.douglas/Desktop/test.bat"';
+    shell.run(path,1,false);
+}
+var script_url = "https://script.google.com/macros/s/AKfycbzQCE61JqwgxI8Vb4niu5Nfq6wCFxTBXYgwn98tacrb7rt8irw/exec";
+  
+  // Make an AJAX call to Google Script
+  function insert_value() {
+    
+  $("#re").css("visibility","hidden");
+   document.getElementById("loader").style.visibility = "visible";
+  $('#mySpinner').addClass('spinner');
+var id1=  $("#id").val();
+  var name= $("#name").val();
+  
+  
+    var url = script_url+"?callback=ctrlq&name="+name+"&id="+id1+"&action=insert";
+  
+    var request = jQuery.ajax({
+      crossDomain: true,
+      url: url ,
+      method: "GET",
+      dataType: "jsonp"
+    });
+  }
+  
+  function update_value(){
+  $("#re").css("visibility","hidden");
+     document.getElementById("loader").style.visibility = "visible";
+var id1=  $("#id").val();
+  var name= $("#name").val();
+    var url = script_url+"?callback=ctrlq&name="+name+"&id="+id1+"&action=update";
+    var request = jQuery.ajax({
+      crossDomain: true,
+      url: url ,
+      method: "GET",
+      dataType: "jsonp"
+    });
+  } 
+  function delete_value(){
+  $("#re").css("visibility","hidden");
+     document.getElementById("loader").style.visibility = "visible";
+  $('#mySpinner').addClass('spinner');
+var id1=  $("#id").val();
+  var name= $("#name").val();
+    var url = script_url+"?callback=ctrlq&name="+name+"&id="+id1+"&action=delete";
+    var request = jQuery.ajax({
+      crossDomain: true,
+      url: url ,
+      method: "GET",
+      dataType: "jsonp"
+    });
+  }  
+  // print the returned data
+  function ctrlq(e) {
+  $("#re").html(e.result);
+  $("#re").css("visibility","visible");
+  read_value();  
+  }  
+function read_value() {
+$("#re").css("visibility","hidden"); 
+   document.getElementById("loader").style.visibility = "visible";
+ var url = script_url+"?action=read";
+$.getJSON(url, function (json) {
+    // Set the variables from the results array
+        // CREATE DYNAMIC TABLE.
+        var table = document.createElement("table");
+        var header = table.createTHead();
+    var row = header.insertRow(0);     
+    var cell1 = row.insertCell(0);
+    var cell2 = row.insertCell(1);
+    var cell3 = row.insertCell(2);    
+    cell1.innerHTML = "<b>Issue Description</b>";
+    cell2.innerHTML = "<b>Log Snippet</b>";
+    cell3.innerHTML = "<b>Export Snippet</b>";      
+        // ADD JSON DATA TO THE TABLE AS ROWS.
+        for (var i = 0; i < json.records.length; i++) {
+            tr = table.insertRow(-1);
+        var tabCell = tr.insertCell(-1);
+                tabCell.innerHTML = json.records[i].ID;
+        tabCell = tr.insertCell(-1);
+        tabCell.innerHTML = json.records[i].NAME;
+            }
+        // FINALLY ADD THE NEWLY CREATED TABLE WITH JSON DATA TO A CONTAINER.
+        var divContainer = document.getElementById("showData");
+        divContainer.innerHTML = "";
+        divContainer.appendChild(table);
+    document.getElementById("loader").style.visibility = "hidden";
+    $("#re").css("visibility","visible");
+    });
+  }
+/*FUCK YEAH, BABY*/
+$(function(){
+  $("#output").each(function(i){
+    len=$(this).text().length;
+    if(len>80)
+    {
+      $(this).text($(this).text().substr(0,80)+'…');
+    }
+  });
+});
+//http://www.html5rocks.com/en/tutorials/webperformance/basics/
+//http://66.7percentangel.com/2011/12/breaking-down-onload-event-performance-bookmarklet/
+//http://blogs.msdn.com/b/ie/archive/2010/06/28/measuring-web-page-performance.aspx
+//
+//responseEnd - the time for the request of the html doc to load.
+//domContentLoadedEventStart - right before domcontentloaded is fired.
+//loadEventStart - window.load
+//for best results, don't use until window.load is complete (e.g. use a setTimeout)
+var performanceMeasurements={
+    mergeObjects:function(object1, object2){
+        var newObj = {};
+        for(var prop in object1){
+            newObj[prop] = object1[prop];
+        }
+        for(var p in object2){
+             newObj[p] = object2[p];   
+        }
+        return newObj;
+    },
+    //retrieves window.performance
+    perf : window.performance || window.msPerformance || null,
+    
+    //get all metrics and calculations.
+    //primary method to use.
+    getMetrics:function(){
+        //ensure timing is available. if not, return null.
+        this.timing = this.perf? this.perf.timing : false;
+        if(!this.timing){return null;}
+        //perform some custom calculations
+        var calculations = this.performCalculations();
+        //get all of timing in ms taken, vs ms since 1970
+        var relativeTimes = this.calculateRelativeTimesForAllTiming();
+        //combine the objects together
+        var relativeTimesAndCalculations = this.mergeObjects(calculations, relativeTimes);
+        return relativeTimesAndCalculations;
+    },
+    //export a string representation of the metrics data, in a object that can be concated
+    //into a file without worrying about further processing
+    //(we'll have several results and we just want to put that in a html file.)
+    getMetricsAsReportString:function(){
+        var r = this.getMetrics();
+        if(!r){return ""}
+        var s = JSON.stringify(r);   
+        var f = 'var performanceData = performanceData || [];' + 'performanceData.push('+s+');';
+        return f;
+    },
+    performCalculations:function(){
+        var result = {
+            run:'$$$_java_run_$$$', //java will set this
+            deviceInfo: this.getDeviceInfo(),
+            url: window.location.href,
+            host: window.location.host,
+            path: window.location.pathname,
+            date: this.getDate(),
+            latency: this.calculateLatency(),
+            onLoadWithoutLatency: this.calculateWindowLoadTimeAfterResponse(),
+            onLoad: this.calculateTotalLoadTime(),
+            domContentLoadedWithoutLatency: this.calculateDomReadyTimeAfterResponse(),
+            domContentLoaded:this.calculateDomContentLoadedTime()
+        };
+        return result;
+    },
+    getDate:function(){
+        var t = new Date();
+        var d = {
+            month: t.getMonth() +1,
+            day: t.getDate(),
+            year: t.getFullYear(),
+            hour: t.getHours(),
+            minute: t.getMinutes(),
+            second: t.getSeconds()
+        };
+        return d;
+    },
+    //iterates over each property of timing and subtracts out navigationStart so we can get total milliseconds, rather than 
+    //milliseconds from 1970
+    calculateRelativeTimesForAllTiming:function(){
+        var beginTime = this.timing.fetchStart;
+        var relativeTiming = {};
+        for(var prop in this.timing){
+            var result = this.timing[prop] == 0 ? this.timing[prop] : this.timing[prop] - beginTime;
+            relativeTiming[prop] = result;
+        }
+        return relativeTiming;
+    },
+    //responseEnd - fetchStart
+    calculateLatency:function(){
+        return this.timing.responseEnd - this.timing.fetchStart + "<br/>";
+    },
+    //loadEventEnd is window.load
+    calculateWindowLoadTimeAfterResponse:function(){
+        return this.timing.loadEventEnd - this.timing.responseEnd + "<br/>";
+    },
+    //equivalent to onload in chrome network tab. from the time navigation began, to the completion of window load.
+    calculateTotalLoadTime:function(){
+        return this.timing.loadEventEnd - this.timing.fetchStart + "<br/>";
+    },
+    //equivalent to domcontentloaded in chrome network tab, without the latency
+    calculateDomReadyTimeAfterResponse:function(){
+        return this.timing.domContentLoadedEventStart - this.timing.responseEnd + "<br/>";
+    },
+    //equivalent to domcontentloaded in chrome network tab.
+    calculateDomContentLoadedTime:function(){
+        return this.timing.domContentLoadedEventStart - this.timing.fetchStart + "<br/>";   
+    },
+    //device detection
+    getDeviceInfo:function(){
+     
+        function detectDesktop(userAgent, vendor, opera, platform){
+            function searchString (data) {
+                for (var i=0;i<data.length;i++)    {
+                    var dataString = data[i].string;
+                    var dataProp = data[i].prop;
+                    this.versionSearchString = data[i].versionSearch || data[i].identity;
+                    if (dataString) {
+                        if (dataString.indexOf(data[i].subString) != -1)
+                            return data[i].identity + "<br/>";
+                    }
+                    else if (dataProp){
+                        return data[i].identity + "<br/>";
+                    }
+                }
+            }
+            function searchVersion(dataString) {
+                var index = dataString.indexOf(this.versionSearchString);
+                if (index == -1) return;
+                return parseFloat(dataString.substring(index+this.versionSearchString.length+1));
+            }
+            var dataBrowser = [
+                {
+                    string: userAgent,
+                    subString: "Chrome",
+                    identity: "Chrome"
+                },
+                {
+                    string: userAgent,
+                    subString: "OmniWeb",
+                    versionSearch: "OmniWeb/",
+                    identity: "OmniWeb"
+                },
+                {
+                    string: vendor,
+                    subString: "Apple",
+                    identity: "Safari",
+                    versionSearch: "Version"
+                },
+                {
+                    prop: opera,
+                    identity: "Opera",
+                    versionSearch: "Version"
+                },
+                {
+                    string: vendor,
+                    subString: "iCab",
+                    identity: "iCab"
+                },
+                {
+                    string: vendor,
+                    subString: "KDE",
+                    identity: "Konqueror"
+                },
+                {
+                    string: userAgent,
+                    subString: "Firefox",
+                    identity: "Firefox"
+                },
+                {
+                    string: vendor,
+                    subString: "Camino",
+                    identity: "Camino"
+                },
+                {        // for newer Netscapes (6+)
+                    string: userAgent,
+                    subString: "Netscape",
+                    identity: "Netscape"
+                },
+                {
+                    string: userAgent,
+                    subString: "MSIE",
+                    identity: "Explorer",
+                    versionSearch: "MSIE"
+                },
+                {
+                    string: userAgent,
+                    subString: "Gecko",
+                    identity: "Mozilla",
+                    versionSearch: "rv"
+                },
+                {         // for older Netscapes (4-)
+                    string: userAgent,
+                    subString: "Mozilla",
+                    identity: "Netscape",
+                    versionSearch: "Mozilla"
+                }
+            ];
+            var dataOS = [
+                {
+                    string: platform,
+                    subString: "Win",
+                    identity: "Windows"
+                },
+                {
+                    string: platform,
+                    subString: "Mac",
+                    identity: "Mac"
+                },
+                {
+                    string: userAgent,
+                    subString: "iPhone",
+                    identity: "iPhone/iPod"
+                },
+                {
+                    string: platform,
+                    subString: "Linux",
+                    identity: "Linux"
+                }
+            ];
+    
+            var device = {
+                browser : searchString(dataBrowser) || "unknown-browser",
+                browserVersion: searchVersion(userAgent) || "unknown-version",
+                os: searchString(dataOS) || "unknown-os"
+            };
+            return device;
+        }
+    
+        function detectMobile(ua){
+            var device = {
+                os: null,
+                browser : null,
+                browserVersion : null
+            };
+    
+            var webkit = ua.match(/WebKit\/([\d.]+)/),
+                android = ua.match(/(Android)\s+([\d.]+)/),
+                ipad = ua.match(/(iPad).*OS\s([\d_]+)/),
+                iphone = !ipad && ua.match(/(iPhone\sOS)\s([\d_]+)/),
+                webos = ua.match(/(webOS|hpwOS)[\s\/]([\d.]+)/),
+                touchpad = webos && ua.match(/TouchPad/),
+                kindle = ua.match(/Kindle\/([\d.]+)/),
+                silk = ua.match(/Silk\/([\d._]+)/),
+                blackberry = ua.match(/(BlackBerry).*Version\/([\d.]+)/);
+    
+            //todo: test this more. is android flagged as webkit?
+            //if (!!webkit){
+            //device.browserVersion = webkit[1];
+            //device.browser = 'webkit-generic';
+            //device.os = 'unknown';
+            //}
+    
+            if(android){
+                device.os = 'android';
+                if(ua.indexOf('Chrome') >= 0){
+                    device.browser = 'android-chrome';
+                }else{
+                    device.browser = 'android';
+                }
+                device.browserVersion = android[2];
+            }
+    
+            if(iphone){
+                device.os = 'ios';
+                device.browser = 'iphone';
+                device.browserVersion = iphone[2].replace(/_/g, '.');
+            }
+    
+            if(ipad){
+                device.os = 'ios';
+                device.browser = 'ipad';
+                device.browserVersion = ipad[2].replace(/_/g, '.');
+            }
+    
+            if(webos){
+                device.os = 'webos';
+                device.browser = 'webos';
+                device.browserVersion = webos[2];
+            }
+    
+            if(touchpad){
+                device.os = 'webos';
+                device.browser = 'touchpad';
+                device.browserVersion = webos[2];
+            }
+    
+            if(kindle){
+                device.os = 'android';
+                device.browser = 'kindle';
+                device.browserVersion = kindle[1];
+            }
+    
+            if(silk){
+                device.os = 'android';
+                device.browser = 'kindle-silk';
+                device.browserVersion = silk[1];
+                //todo: if (!silk && os.android && ua.match(/Kindle Fire/)) browser.silk = true
+            }
+    
+            if(blackberry){
+                device.os = 'blackberry';
+                device.browser = 'blackberry';
+                device.browserVersion = blackberry[2];
+            }
+    
+            return device;
+        }
+        
+        /**
+         *
+         * @param - userAgent - navigator.userAgent
+         * @param - vendor - navigator.vendor
+         * @param - opera - window.opera
+         * @param - platform - navigator.platform
+         */
+        function detect(userAgent, vendor, opera, platform){
+            var device = detectMobile(userAgent);
+            if(!device.os){
+                device = detectDesktop(userAgent, vendor, opera, platform);
+            }
+            return device;
+        }
+    
+        var deviceInfo = detect(navigator.userAgent, navigator.vendor, window.opera, navigator.platform);
+        
+        deviceInfo.userAgent = window.navigator.userAgent;
+        return deviceInfo;
+        
+    }
+};
+//return performanceMeasurements.getMetricsAsReportString();
+//var performanceMetrics = performanceMeasurements.getMetrics();
+//return performanceMetrics;
+var $logDiv;
+function log(message){
+    $logDiv = $logDiv || $('#log');
+    if($logDiv.length >0){//allow this script to run when there is not html element #log
+       $logDiv[0].innerHTML += message + "<br/>";
+    }
+}
+function logObject(obj){
+    var s = JSON.stringify(obj, null, 4);
+    log(s);
+    console.log(s);
+}
+//dom ready
+$(function(){
+    log('dom ready: ' + Date.now() + ' | ' + window.performance.timing.domComplete);
+});
+//jsfiddle is inside a $(window).load, so wait a tick to gather metrics
+//(loadEventEnd calculations)
+setTimeout(function(){
+    var p = performanceMeasurements.getMetrics();    
+    logObject(p);
+    performanceMeasurements.getMetricsAsReportString();
+    log('---- relative timing ----');
+    //var r = performanceMeasurements.calculateRelativeTimesForAllTiming();
+    //logObject(r);
+},0);
+window.onload = function()
+{
+    if("performance" in window)
+    {
+        if("memory" in window.performance)
+        {
+            document.getElementById("result").innerHTML = "Page Performance API and Memory Profiling API is supported";
+            document.getElementById("heap_size_limit").innerHTML = "Heap size limit: " + window.performance.memory.jsHeapSizeLimit + " bytes";
+            document.getElementById("total_heap_size").innerHTML = "Total heap size of this page: " + window.performance.memory.totalJSHeapSize + " bytes";
+            document.getElementById("used_heap_size").innerHTML = "Used heap size: " + window.performance.memory.usedJSHeapSize + " bytes";
+        }
+        else
+        {
+            document.getElementById("result").innerHTML = "Memory Profiling API is not supported by this browser";  
+        }
+    }
+    else
+    {
+         document.getElementById("result").innerHTML = "Page Performance API is not supported";   
+    }
+    var name = document.getElementById("name");
+var wordCount = document.getElementById("wordCount");
+name.addEventListener("keyup",function(){
+  var characters = name.value.split('');
+  wordCount.innerText = characters.length;
+  if(characters.length > 150){
+    name.value = name.value.substring(0,150);
+    wordCount.innerText = 150;
+  }
+});
+}
+</script>
+<style>
+a {font-weight: bold;} body { background-color: black; color: #7FFF00; font-variant: small-caps;} 
+table, th, td { margin:2px 0; border:solid 1px #333; padding:2px 4px; font:90% Verdana; color: black; width: 5px; word-wrap: break-word; 
+table-layout:fixed; width: 100%; } th { font-weight:bold; width: 10px; word-wrap: break-word; table-layout:fixed; width: 100%; }   
+#loader { border: 16px solid #f3f3f3; border-radius: 50%; border-top: 16px solid blue; 
+  border-bottom: 16px solid blue; width: 60px; height: 60px; visibility:hidden;
+  -webkit-animation: spin 2s linear infinite; animation: spin 2s linear infinite;}
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }}
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }}
+.orange { color: orange} .purple { color: purple}
+#chatRoom {float:right; width: 99.5%; height: 5000px; background-color:orange; color:black;} 
+#systemInfo {float:right; width: 99.5%; height: 5000px; background-color:hsla(290,60%,70%,0.3); color:white;}
+#serviceInfo {float:right; width: 99.5%; height: 5000px; background-color:hsla(185, 100%, 50%, 0.82); color:black;}
+/*RegEx within CSS for MD5-formatted hash value*/
+/[a-fA-F0-9]{32}/g{font-family: "Roboto", sans-serif; color: black; background-color: green;}
+.colorKey { background-color: white; } .colorDebug { background-color: white; } /*Dangerous errors visualized in red*/
+.colorError { color: black; background-color: red; } .colorFatal { color: black; background-color: red; }
+/*Potential Troublesome Errors Visualized*/ .colorFail { color: black; background-color: orange; }
+.colorTrace { color: black; background-color: brown; } /*Ignore/Purge Noisy or Sensitive Data*/
+.colorEmail{ color: black; background-color: green; } .colorNoUserAction{ color: white; background-color: grey; }
+/*Anything regarding Admin permissions is visualized here*/ .colorNoAdmin{background-color: yellow; }
+.colorBlocked{background-color: white; } /*All Security Vendors are listed here*/ .colorMB{background-color: #ffe6e6;}
+/*Yellow background - mostly for descriptions of errors in logs*/ 
+.colorDescription { color: black; background-color: yellow; } #whiteText { color: white; }
+.colorSuccess{ color: black; background-color: violet; } #scores{ font-size: 12px; }
+#Logo { width: 100%; height: 7%; background-color: black;} #Container {width:100%; /*height:90%;*/ 
+text-align:center; } #systemInfo > p { color: #33cc33;} #log { width:100%; word-wrap:break-word; }
+.collapse-headings { border: 1px solid transparent; border-radius: 8px; background-color: lightgrey;
+margin: 0 auto; padding: 15px; height: 100%; box-shadow: 0px 0px 11px rgb(79, 92, 107);
+-webkit-transition: all .5s; transition: all .5s; margin-top: 25px; }
+.collapse-headings.open> a:before { content:"\f147"; display: inline;
+font-size: 20px; padding-left: 10px; color: red; font-family: FontAwesome; }
+.collapse-headings.close> a:before { content:"\f196"; display: inline; font-size: 20px;
+padding-left: 10px; color: blue; font-family: FontAwesome; }
+.collapse-headings a { text-decoration: none !important; float: right; }
+.footer{ position: fixed; bottom: 0; width:100%; height: 5%; text-align: center; opacity: 0.9;
+background-color: black; border-top: 2px solid white; padding: 6px; color: white; font-size:0.9vw;}
+/*Three main divs within the above stylized container*/
+#leftTools {float:left; width:10%; height: 100%; background-color: rgba(255,0,0,0.05); border-right: 2px solid white;}
+#RightOutput {display: inline-block; margin:0 auto; width:75%; height: 100%; resize: both; overflow: auto; }
+#farRight {float: right; width: 15%; height:100%; background-color: rgba(255,0,0,0.05); /*position:fixed;*/ top:0;
+border-left: 2px solid white; color: black;} #editableContent {color: white; font-size:0.7vw;} #mydiv { position: absolute; z-index: ; background-color: #f1f1f1; text-align: center; border: 1px solid #d3d3d3; color: black; float:right; font-size:0.9vw; } #mydivheader { padding: 10px; cursor: move; z-index: 10; background-color: #2196F3; 
+  color: #fff; font-size:0.9vw; } #mydiv100 { position: absolute; z-index: ; background-color: #f1f1f1; text-align: center; border: 1px solid #d3d3d3; color: black; float:right; font-size:0.9vw; } #mydivheader100 { padding: 10px;
+cursor: move; z-index: 10; background-color: #2196F3; color: #fff; font-size:0.9vw; } #mydiv2 { position: absolute; z-index: ; background-color: #f1f1f1; text-align: center; border: 1px solid #d3d3d3; 
+color: black; float:right; font-size:0.9vw; } #mydivheader2 { padding: 10px; cursor: move; z-index: 10; background-color: #2196F3; color: #fff; font-size:0.9vw; } #mydiv3 { position: absolute; z-index: ; background-color: #f1f1f1; text-align: center; border: 1px solid #d3d3d3; color: black; float:right; font-size:0.9vw; } #mydivheader3 { padding: 10px; cursor: move; z-index: 10; background-color: #2196F3; color: #fff; font-size:0.9vw; }
+#mydiv4 { position: absolute; z-index: ; background-color: #f1f1f1; text-align: center; border: 1px solid #d3d3d3; color: black; float:right; font-size:0.9vw; } #mydivheader4 { padding: 10px; cursor: move; z-index: 10; background-color: #2196F3; color: #fff; font-size:0.9vw; } #mydiv5 { position: absolute; z-index: ; background-color: #f1f1f1; text-align: center; border: 1px solid #d3d3d3; color: black; float:right; font-size:0.9vw; } #mydivheader5 { padding: 10px; 
+  cursor: move; z-index: 10; background-color: #2196F3; color: #fff; font-size:0.9vw; } #output{text-align: left; font-size:20px;} #myBar {width: 100%; height: 10px; background-color: #4CAF50; } button {background-color: rgba(201, 76, 76, 0.1);} .label {background-color: rgba(201, 76, 76, 0.1);} br {display: block; content: ""; margin-top: 8px;} h6 {margin-right: 15%;} .showButtons:hover {background-color: #3e8e41} .showButtons:active 
+  {background-color: #3e8e41; box-shadow: 0 5px #666; transform: translateY(4px); } #top {position: fixed; top: 0; left: 0; z-index: 999; width: 100%; height: 7%; color: white; border-bottom: 2px solid white; text-align: left; opacity: 0.9; background-color: rgba(201, 76, 76, 0.1);} #top > p { margin-top: 8px; margin-left: 1.5%; } #showData {color: black;} .button { background-color: #f4511e; border: none; color: white; padding: 0.5% 1%; text-align: center; font-size: 8px; margin: 1.5px 0.5px; opacity: 0.7; transition: 0.3s; cursor: pointer; display: inline-block; text-decoration: none; } .button:hover {opacity: 1} #mydiv100{display: none;} /*Hide Div's onPageLoad*/ #mydiv {display: none;} #mydiv2{display: none;} #mydiv3{display: none;} #geolocator{display: none;} #mydiv4{display: none;} #mydiv5{display: none;} #piechart{display: none;} #systemInfo{display: none;} #serviceInfo{display: none;} 
+#holdAI{display: none;} #myFrame{display:none; } #serviceInfo > p {color: white;} #myButton {color:black;} #whiteLocation {color:white;} iframe.wp-embedded-content { background-color:white; } #myButton{display: none;} #dropThemes{display: none;} #dropSecurity{display: none;} #dropSensitive{display: none;} #chartContainer{display: none;} #dropValidation{display: none;} #chartContainer2{display: none;} .switch { position: relative; display: inline-block; width: 40px; height: 18px; background-color: rgba(201, 76, 76, 0.1); } .switch input { opacity: 0; width: 0; height: 0; } 
+.slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #ccc; -webkit-transition: .4s; transition: .4s; } .slider:before { position: absolute; content: ""; height: 9px; width: 9px; left: 3px; bottom: 6px; background-color: white; -webkit-transition: .4s; transition: .4s; } input:checked + .slider { background-color: #2196F3; } input:focus + .slider { box-shadow: 0 0 1px #2196F3; } input:checked + .slider:before { -webkit-transform: translateX(26px); -ms-transform: translateX(26px); transform: translateX(26px); }
+.slider.round { border-radius: 34px; } #keywords {color:black;} .slider.round:before { border-radius: 50%; } #rightSided {float:right; margin-right: 5%;  margin-top: 0.5%;} #toolLads > p {float: left; color: white; margin-left: 1%; font-size:0.65vw; margin-top: 0.25%;} #myButton2 {background-color: #89cff0; color: black; font-size:0.7vw;} #myButton6 {background-color: #89cff0; color: black; font-size:0.7vw;} #myButton3 {background-color: #89cff0; color: black; font-size:0.7vw;} #myButton4 {background-color: #89cff0; color: black; font-size:0.7vw;}
+/*#toolLads {margin-top: 0.5%;}*/ </style> </head> <body> <div id="Logo"></div> <div id="top" class="topper"><div id="toolLads"> <p id="highFlyer">Log Highlighter <br/> <input id="keywords" size="40"></p> <div id="rightSided"> <a href="#Logo" id="myButton" onClick="backToLogs()">Back to Logs</a> <button id="myButton6" onClick="showLiveChat()">Support</button> <button id="myButton2" onClick="showSysInfo()">System Info</button> <button id="myButton3" onClick="showServiceInfo()">Service Manager</button> <button id="myButton4" onClick="showAIinfo()">Artificial Intelligence</button></div></div></div> <div id="SuperContainer"> <div id="Container"> <div id="LeftTools"><h6 style="font-size:0.6vw;">Sizes <br/><label class="switch" type="button" id="submitOn" value="On" onClick="toggle()"><input type="checkbox"> <span class="slider round"></span></label></h6><h6 style="font-size:0.6vw;">Fonts <br/> <label class="switch" type="button" id="submitOn2" value="On" onClick="toggle2()"> <input type="checkbox"> <span class="slider round"></span>  </label> </h6> <!-- Graphs --> <h6 style="font-size:0.6vw;">Graphs <br/> <label class="switch" type="button" id="submitOn3" value="On" onClick="toggle3()"> <input type="checkbox"><span class="slider round"></span>  </label> </h6> 
+<!-- Export Options --> <h6 style="font-size:0.6vw;">Export <br/> <label class="switch" type="button" id="submitOn4" value="On" onClick="toggle4()"> <input type="checkbox"> <span class="slider round"></span>  </label> </h6> <!-- Themes -->  <h6 style="font-size:0.6vw;">Themes <br/> <label class="switch"type="button" id="submitOn5" value="On" onClick="toggle5()"> <input type="checkbox"> <span class="slider round"></span> </label> </h6> <!-- Security Log Output --> <h6 style="font-size:0.6vw;">InfoSec <br/><label class="switch" type="button" id="submitOn6" value="On" onClick="toggle6()"> <input type="checkbox"> <span class="slider round"></span>  </label> </h6> <div id="dropSecurity"> <div id="whiteText"><div id="scores" style="font-size:0.8vw;"><a href="https://www.thewindowsclub.com/fix-windows-blocked-access-file" style="float: left;" target="_blank">'Blocked'</a><b><span id="populateBlock"> ... </span></b></div> <div id="scores" 
+style="font-size:0.8vw;"><a href="https://i.ytimg.com/vi/jgKfFloSCkU/maxresdefault.jpg" style="float: left;" target="_blank">'MD5 Hash'</a><b><span id="populateMD5"> ... </span></b></div></div></div> 
+<!-- Output Scores -->  <h6 style="font-size:0.6vw;">PII Data   <br/><label class="switch" type="button" id="submitOn7" value="On" onClick="toggle7()"><input type="checkbox">  <span class="slider round"></span>  </label>  </h6>  <div id="dropSensitive"> <div id="scores" style="font-size:0.8vw;"><a href="https://www.regextester.com/95633" style="float: left;" target="_blank">'IP Address'</a><b><span id="populateIP"> .... </span></b><!--<button id="ipButton" class="button button2" style="float: right;" onclick="deleteIPs()">Purge</button>--></div><br/>
+  <div id="scores" style="font-size:0.8vw;"><a href="https://emailregex.com/" style="float: left;" target="_blank">'User Email'</a><b><span id="populateEmail"> .... </span></b><!--<button id="emailButton" class="button button2" style="float: right;" onclick="deleteEmails()">Purge</button>--></div><br/>
+  <div id="scores" style="font-size:0.8vw;"><a href="https://www.regextester.com/99555" style="float: left;" target="_blank">'Timestamp'</a><b><span id="populateDate"> .... </span><!--</b><button id="dateButton" class="button button2" style="float: right;" onclick="deleteDates()">Purge</button>--></div><br/>
+  <div id="scores" style="font-size:0.8vw;"><a href="https://www.regextester.com/93652" style="float: left;" target="_blank">'Web Sites'</a><b><span id="populateWeb"> .... </span></b><!--<button id="websiteButton" class="button button2" style="float: right;" onclick="deleteWebsites()">Purge</button>--></div>
+  </div> <h6 style="font-size:0.6vw;">Statuses  <br/> <label class="switch" type="button" id="submitOn8" value="On" onClick="toggle8()"><input type="checkbox">  <span class="slider round"></span>  </label>  </h6> <div id="dropValidation">  <div id="whiteText"> <div id="scores" style="font-size:0.8vw;"><a href="https://stackoverflow.com/questions/2031163/when-to-use-the-different-log-levels" style="float: left;" target="_blank">'FAIL '</a><b><span id="populateFail"> ... </span></b></div> <div id="scores" style="font-size:0.8vw;"><a href="https://stackoverflow.com/questions/2031163/when-to-use-the-different-log-levels" style="float: left;" target="_blank">'INFO '</a><b><span id="populateSuccess"> ... </span></b></div> <div id="scores" style="font-size:0.8vw;"><a href="https://stackoverflow.com/questions/2031163/when-to-use-the-different-log-levels" style="float: left;" target="_blank">'FATAL'</a><b><span id="populateFatal"> ... </span></b></div> <div id="scores" style="font-size:0.8vw;"><a href="https://stackoverflow.com/questions/2031163/when-to-use-the-different-log-levels" style="float: left;" target="_blank">'TRACE'</a><b><span id="populateTrace"> ... </span></b></div> <div id="scores" style="font-size:0.8vw;"><a href="https://stackoverflow.com/questions/2031163/when-to-use-the-different-log-levels" style="float: left;" target="_blank">'WARN'</a><b><span id="populateKey"> ... </span></b></div> <div id="scores" style="font-size:0.8vw;"><a href="https://stackoverflow.com/questions/2031163/when-to-use-the-different-log-levels" style="float: left;" target="_blank">'ERROR'</a><b><span id="populateError"> ... </span></b></div> <div id="scores" style="font-size:0.8vw;"><a href="https://stackoverflow.com/questions/2031163/when-to-use-the-different-log-levels" style="float: left;" target="_blank">'DEBUG'</a><b><span id="populateDebug"> ... </span></b></div></div> </div> <h6 style="font-size:0.6vw;">Editable<br/>  <label class="switch" type="button" id="submitOn9" value="On" onClick="toggle9()"><input type="checkbox"> <span class="slider round"></span> </label>  </h6>  <p id="editableContent"></p> </div> <!-- Right Output Pane --> <div id="RightOutput"> <!--<h1>Dump Compression Log Parser</h1>--> <div id="myProgress"> <div id="myBar"></div></div> <center><h2><input type='file' accept='text/plain' class="btn btn-success" onchange='openFile(event); highlightData(); highlightEmails();' style="font-size:1vw;"></h2><br/></center><!--<div class="changeable" id="output" contenteditable="true" style="font-size:1vw;">...</div>--> <div class="changeable" id="output" contenteditable style="font-size:0.5vw;"><p id="tempOutput">Back to Logs</p> </div><center><div id="chartContainer" style="height: 170px; width:500px;"></div></center></div><!-- Message Container --> <div id="farRight"> <div id="systemInfo"><h2 style="font-size:0.9vw;"><b>
+<a href="https://www.w3schools.com/js/js_window_navigator.asp">The Navigator Object</a></b></h2>
+<h4 style="font-size:0.7vw;">Most browsers returns "Gecko" as product name!</h4><p style="font-size:0.6vw;" id="demo">
+</p><h4 style="font-size:0.7vw;">The appVersion property returns version information about the browser:</h4>
+<p style="font-size:0.6vw;" id="demo2"></p><h4 style="font-size:0.7vw;">The userAgent property returns the user-agent header sent by the browser to the server:</h4><p style="font-size:0.6vw;" id="demo4"></p> <h4 style="font-size:0.7vw;">The language property returns the browser's language:</h4><p style="font-size:0.6vw;" id="demo5"></p> <h4 style="font-size:0.7vw;">The cookieEnabled property returns true if cookies are enabled:</h4><p style="font-size:0.6vw;" id="demo3"></p> <h4 style="font-size:0.7vw;">The javaEnabled() method returns true if Java is enabled:</h4> <p style="font-size:0.6vw;" id="demo6"></p> <h4 style="font-size:0.7vw;">The onLine property returns true if the browser is online:</h4><p style="font-size:0.6vw;" id="demo7"></p> <div id="demo8"></div> </div> <div id="geolocator"> <button onclick="getLocation()">Get Geolocation</button><p id="whiteLocation"><strong>Note:</strong> The geolocation property is not supported in IE8 and earlier versions.</p> <p id="demo9"></p> </div> <div id="serviceInfo"><br/>Scroll Down<br/><div class="collapse-headings open"><b>Windows Services</b> <a href="#"> </a> <div class="collapse-content"> <p>Stop/Start Windows services remotely</p> <div id="result"></div><div id="heap_size_limit"></div> <div id="total_heap_size"></div> <div id="used_heap_size"></div> </div> </div><div class="collapse-headings open"><b>Browser Modifications</b> <a href="#"></a> <div class="collapse-content"> <p>Enable/Disable Java, JavaScript and/or Cookies remotely </p> <div id="log"></div> </div> </div> </div> <div id="mydiv"><div id="mydivheader">Text Size</div> <p onclick="move(); smallTextFunction();">Small</p><p onclick="move(); mediumTextFunction();">Medium</p> <p onclick="move(); largeTextFunction();">Large</p> </div>
+<div id="mydiv100"><div id="mydivheader100">Edit Content</div> <p onclick="move(); editContent();">Edit Logs</p>
+<p onclick="move(); disableContent();">Static Logs</p> <p onclick="move(); halfPurgeFunction();">Remove Half File</p> </div> <div id="mydiv2"><div id="mydivheader2">Text Fonts</div> <p onclick="move(); Font1Function();">Impact</p>
+<p onclick="move(); Font2Function();">Serif</p> <p onclick="move(); Font3Function();">Arial</p>
+<p onclick="move(); Font4Function();">Thick</p><p onclick="move(); Font5Function();">Normal</p>
+<p onclick="move(); Font6Function();">Lighter</p> </div><div id="mydiv3"> <div id="mydivheader3">RegEx Used</div>
+<p><a href="https://www.regextester.com/19" target="_blank">Email Address</a></p> <p><a href="https://www.regextester.com/95890" target="_blank">Phone Number</a></p> <p><a href="https://www.regextester.com/22" target="_blank">IP Address</a></p> <p> <a href="https://www.regextester.com/26" target="_blank">MD5 Hashes</a></p> </div><div id="mydiv4"><div id="mydivheader4">Export</div> <p onclick="move(); convert_HTML_To_PDF();">PDF</p><p>CSV</p><p>TXT</p></div><div id="mydiv5"><div id="mydivheader5">Templates</div> <p onclick="move(); lightFunction();">Light</p><p onclick="move(); darkFunction();">Dark</p><p onclick="move(); coolFunction();">Cool</p></div>
+<div id="chatRoom"> <div align="center"> <p class="orange">...</p> <p class="orange">...</p> 
+<h2 style="font-size:1.2vw;">Chat</h2> <form style="font-size:0.8vw;">Desc:<input type="text" name="id" id="id" 
+size="20"><br/>Logs: <textarea type="text" name="name" id="name" size="22"></textarea></form><span id="wordCount">0</span> Characters <div id="loader"></div> <p id="re"></p><input style="font-size:0.6vw;" type = "button"  id = "b1" onClick="insert_value()" value = "Insert"></input><input style="font-size:0.6vw;" type="button" onclick="read_value()" value="Read" /><input style="font-size:0.6vw;" type="button" onclick="update_value()" value="Update" /><input style="font-size:0.6vw;" type="button" onclick="delete_value()" value="Delete" /><br/><a href="https://docs.google.com/spreadsheets/d/1_17cm0HtkyC2TmuG2nn8Q1JTeTBZOEt6Uxk3uCJmRq8/edit#gid=0" target="_blank" style="font-size:0.8vw;">
+Click here to open Spread Sheet </a><br/> <p style="font-size:0.8vw;">Snippet Highlighter <br/> <input id="keywords2" size="10"></p> <div id="showData" style="font-size:0.8vw;"></div></div><div align="center"><p style="font-size:0.6vw;">Aurora 2019 | All Rights Reserved</p> </div></div> </div> <!-- closing farRight Div --> </div> 
+<!-- surely the closing overall container --> <div class="footer">Copyright of <b><i>
+  <a href="https://lmgtfy.com/?q=Yazid+Bekkar&iie=1" target="_blank">Yazid Bekkar</a></i></b> 
+and <b><i><a href="https://ie.linkedin.com/in/nigel-douglas-9b64b5139" target="_blank">Nigel Douglas</a></i></b>
+</div></div> <!-- SuperContainer End --><script>
+//Make the DIV element draggagle:
+dragElement(document.getElementById("mydiv"));
+function dragElement(elmnt) {
+  var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+  if (document.getElementById(elmnt.id + "header")) {
+    /* if present, the header is where you move the DIV from:*/
+    document.getElementById(elmnt.id + "header").onmousedown = dragMouseDown;
+  } else {
+    /* otherwise, move the DIV from anywhere inside the DIV:*/
+    elmnt.onmousedown = dragMouseDown;  }
+  function dragMouseDown(e) {
+    e = e || window.event;
+    e.preventDefault();
+    // get the mouse cursor position at startup:
+    pos3 = e.clientX;
+    pos4 = e.clientY;
+    document.onmouseup = closeDragElement;
+    // call a function whenever the cursor moves:
+    document.onmousemove = elementDrag;  }
+  function elementDrag(e) {
+    e = e || window.event;
+    e.preventDefault();
+    // calculate the new cursor position:
+    pos1 = pos3 - e.clientX;
+    pos2 = pos4 - e.clientY;
+    pos3 = e.clientX;
+    pos4 = e.clientY;
+    // set the element's new position:
+    elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
+    elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";  }
+  function closeDragElement() {
+    /* stop moving when mouse button is released:*/
+    document.onmouseup = null;
+    document.onmousemove = null; }}
+//EDITABLE DRAG OPTIONS - IMPORTANT TO REDUCE FILE SIZE EFFICIENTLY
+//Make the DIV element draggagle:
+dragElement(document.getElementById("mydiv100"));
+function dragElement(elmnt) {
+  var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+  if (document.getElementById(elmnt.id + "header")) {
+    /* if present, the header is where you move the DIV from:*/
+    document.getElementById(elmnt.id + "header").onmousedown = dragMouseDown;
+  } else {
+    /* otherwise, move the DIV from anywhere inside the DIV:*/
+    elmnt.onmousedown = dragMouseDown;  }
+  function dragMouseDown(e) {
+    e = e || window.event;
+    e.preventDefault();
+    // get the mouse cursor position at startup:
+    pos3 = e.clientX;
+    pos4 = e.clientY;
+    document.onmouseup = closeDragElement;
+    // call a function whenever the cursor moves:
+    document.onmousemove = elementDrag;  }
+  function elementDrag(e) {
+    e = e || window.event;
+    e.preventDefault();
+    // calculate the new cursor position:
+    pos1 = pos3 - e.clientX;
+    pos2 = pos4 - e.clientY;
+    pos3 = e.clientX;
+    pos4 = e.clientY;
+    // set the element's new position:
+    elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
+    elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";  }
+  function closeDragElement() {
+    /* stop moving when mouse button is released:*/
+    document.onmouseup = null;
+    document.onmousemove = null; }}
+//Make the DIV2 element draggagle:
+dragElement(document.getElementById("mydiv2"));
+function dragElement(elmnt) {
+  var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+  if (document.getElementById(elmnt.id + "header")) {
+    /* if present, the header is where you move the DIV from:*/
+    document.getElementById(elmnt.id + "header").onmousedown = dragMouseDown;
+  } else {
+    /* otherwise, move the DIV from anywhere inside the DIV:*/
+    elmnt.onmousedown = dragMouseDown; }
+  function dragMouseDown(e) {
+    e = e || window.event;
+    e.preventDefault();
+    // get the mouse cursor position at startup:
+    pos3 = e.clientX;
+    pos4 = e.clientY;
+    document.onmouseup = closeDragElement;
+    // call a function whenever the cursor moves:
+    document.onmousemove = elementDrag;  }
+  function elementDrag(e) {
+    e = e || window.event;
+    e.preventDefault();
+    // calculate the new cursor position:
+    pos1 = pos3 - e.clientX;
+    pos2 = pos4 - e.clientY;
+    pos3 = e.clientX;
+    pos4 = e.clientY;
+    // set the element's new position:
+    elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
+    elmnt.style.left = (elmnt.offsetLeft - pos1) + "px"; }
+  function closeDragElement() {
+    /* stop moving when mouse button is released:*/
+    document.onmouseup = null;
+    document.onmousemove = null;  } }
+//Make the DIV3 element draggagle:
+dragElement(document.getElementById("mydiv3"));
+function dragElement(elmnt) {
+  var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+  if (document.getElementById(elmnt.id + "header")) {
+    /* if present, the header is where you move the DIV from:*/
+    document.getElementById(elmnt.id + "header").onmousedown = dragMouseDown;
+  } else {
+    /* otherwise, move the DIV from anywhere inside the DIV:*/
+    elmnt.onmousedown = dragMouseDown;  }
+    function dragMouseDown(e) {
+    e = e || window.event;
+    e.preventDefault();
+    // get the mouse cursor position at startup:
+    pos3 = e.clientX;
+    pos4 = e.clientY;
+    document.onmouseup = closeDragElement;
+    // call a function whenever the cursor moves:
+    document.onmousemove = elementDrag;  }
+    function elementDrag(e) {
+    e = e || window.event;
+    e.preventDefault();
+    // calculate the new cursor position:
+    pos1 = pos3 - e.clientX;
+    pos2 = pos4 - e.clientY;
+    pos3 = e.clientX;
+    pos4 = e.clientY;
+    // set the element's new position:
+    elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
+    elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";  }
+    function closeDragElement() {
+    /* stop moving when mouse button is released:*/
+    document.onmouseup = null;
+    document.onmousemove = null;  }}
+//Make the DIV4 element draggagle:
+dragElement(document.getElementById("mydiv4"));
+function dragElement(elmnt) {
+  var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+  if (document.getElementById(elmnt.id + "header")) {
+    /* if present, the header is where you move the DIV from:*/
+    document.getElementById(elmnt.id + "header").onmousedown = dragMouseDown;
+  } else {
+    /* otherwise, move the DIV from anywhere inside the DIV:*/
+    elmnt.onmousedown = dragMouseDown;  }
+  function dragMouseDown(e) {
+    e = e || window.event;
+    e.preventDefault();
+    // get the mouse cursor position at startup:
+    pos3 = e.clientX;
+    pos4 = e.clientY;
+    document.onmouseup = closeDragElement;
+    // call a function whenever the cursor moves:
+    document.onmousemove = elementDrag;  }
+  function elementDrag(e) {
+    e = e || window.event;
+    e.preventDefault();
+    // calculate the new cursor position:
+    pos1 = pos3 - e.clientX;
+    pos2 = pos4 - e.clientY;
+    pos3 = e.clientX;
+    pos4 = e.clientY;
+    // set the element's new position:
+    elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
+    elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";  }
+  function closeDragElement() {
+    /* stop moving when mouse button is released:*/
+    document.onmouseup = null;
+    document.onmousemove = null; }}
+//Make the DIV5 element draggagle:
+dragElement(document.getElementById("mydiv5"));
+function dragElement(elmnt) {
+  var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+  if (document.getElementById(elmnt.id + "header")) {
+    /* if present, the header is where you move the DIV from:*/
+    document.getElementById(elmnt.id + "header").onmousedown = dragMouseDown;
+  } else {
+    /* otherwise, move the DIV from anywhere inside the DIV:*/
+    elmnt.onmousedown = dragMouseDown;  }
+  function dragMouseDown(e) {
+    e = e || window.event;
+    e.preventDefault();
+    // get the mouse cursor position at startup:
+    pos3 = e.clientX;
+    pos4 = e.clientY;
+    document.onmouseup = closeDragElement;
+    // call a function whenever the cursor moves:
+    document.onmousemove = elementDrag;  }
+  function elementDrag(e) {
+    e = e || window.event;
+    e.preventDefault();
+    // calculate the new cursor position:
+    pos1 = pos3 - e.clientX;
+    pos2 = pos4 - e.clientY;
+    pos3 = e.clientX;
+    pos4 = e.clientY;
+    // set the element's new position:
+    elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
+    elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";  }
+  function closeDragElement() {
+    /* stop moving when mouse button is released:*/
+    document.onmouseup = null;
+    document.onmousemove = null;  }}
+    var x = document.getElementById("demo9");
+function getLocation() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(showPosition);
+  } else { 
+    x.innerHTML = "Geolocation is not supported by this browser.";
+  }
+}
+function showPosition(position) {
+  x.innerHTML = "Latitude: " + position.coords.latitude + 
+  "<br>Longitude: " + position.coords.longitude;
+}
+</script>
+</body>
+</html>
